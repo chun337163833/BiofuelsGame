@@ -1,0 +1,38 @@
+goog.provide('biofuelsGame.plotHealth');
+
+goog.require('biofuelsGame.mouseOverSprite');
+
+//---------------------------------------------------------
+// Plot Health icon subclass - subclass of lime.sprite
+//---------------------------------------------------------
+biofuelsGame.plotHealth = function() 
+{
+    // must call super constructor
+    biofuelsGame.mouseOverSprite.call(this);
+  
+    this.setFill('assets/field_health_icon.png');
+    this.setSize(50,50);
+    this.setOpacity(this.DEFAULT_OPACITY);
+
+	this.enableClickInteraction();	
+};
+
+goog.inherits(biofuelsGame.plotHealth, biofuelsGame.mouseOverSprite);
+
+//--------------------------------------------------------------------------------------------------
+biofuelsGame.plotHealth.prototype.enableClickInteraction = function() 
+{	
+	// Add click event
+	goog.events.listen(this, ['mousedown', 'touchstart'], function(evt) 
+	{
+		
+	}); // <mousedown listen event
+};
+
+//--------------------------------------------------------------------------------------------------
+biofuelsGame.plotHealth.prototype.enableInteractions = function() 
+{
+	biofuelsGame.mouseOverSprite.prototype.enableMouseOver.call(this);
+	this.enableClickInteraction();
+};
+
