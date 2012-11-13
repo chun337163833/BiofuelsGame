@@ -1,4 +1,4 @@
-goog.provide('biofuelsGame.healthPopup');
+goog.provide('biofuelsGame.clientHealth');
 
 goog.require('lime.RoundedRect');
 goog.require('lime.animation.FadeTo');
@@ -25,46 +25,40 @@ function makeLabel(text, pos_x, pos_y, size, color, align)
 }
 
 //--------------------------------------------------------------------------------------------------
-// plot health popup subclass - subclass of roundedRect
+// Total health of local client subclass - subclass of roundedRect
 //--------------------------------------------------------------------------------------------------
-biofuelsGame.healthPopup = function() 
+biofuelsGame.clientHealth = function() 
 {
     // must call super constructor
     lime.RoundedRect.call(this);
         
-    this.setSize(180,180).setRadius(10);
-    this.setFill('#FEF8D0').setOpacity(0.9);
+    this.setSize(200,200).setRadius(10);
+    this.setFill('#FEF8D0');
 	this.setStroke(new lime.fill.Stroke(10, '#664'));     
-    this.setScale(0.25);
-	this.runAction( new lime.animation.ScaleTo(1).setDuration(0.1) );
 	
-	this.closeSprite = new lime.Sprite().setFill('assets/close_icon.png');
-	this.closeSprite.setPosition(95,-95).setAnchorPoint(1,0).setOpacity(0.8);
-	this.appendChild(this.closeSprite);
-	
-	this.graphTitle = makeLabel('Field Sustainability', 0, -85, 10, '#000', 'center');
+	this.graphTitle = makeLabel('Farmer Sustainability', 0, -95, 12, '#fff', 'center');
 	this.appendChild(this.graphTitle);
 	
-	this.graphLabel1 = makeLabel('Emissions', 0, -75, 10, '#777', 'center');
+	this.graphLabel1 = makeLabel('Emissions', 0, -85, 10, '#777', 'center');
 	this.appendChild(this.graphLabel1);
 
-	this.graphLabel2 = makeLabel('Economic Value', 0, 75, 10, '#777', 'center');
+	this.graphLabel2 = makeLabel('Economic Value', 0, 85, 10, '#777', 'center');
 	this.appendChild(this.graphLabel2);
 
-	this.graphLabel3a = makeLabel('Soil', 65, -5, 10, '#777', 'center');
+	this.graphLabel3a = makeLabel('Soil', 75, -5, 10, '#777', 'center');
 	this.appendChild(this.graphLabel3a);
-	this.graphLabel3b = makeLabel('Health', 65, 5, 10, '#777', 'center');
+	this.graphLabel3b = makeLabel('Health', 75, 5, 10, '#777', 'center');
 	this.appendChild(this.graphLabel3b);
 	
-	this.graphLabel4a = makeLabel('Energy', -59, -5, 10, '#777', 'center');
+	this.graphLabel4a = makeLabel('Energy', -69, -5, 10, '#777', 'center');
 	this.appendChild(this.graphLabel4a);
-	this.graphLabel4b = makeLabel('Potential', -59, 5, 10, '#777', 'center');
+	this.graphLabel4b = makeLabel('Potential', -69, 5, 10, '#777', 'center');
 	this.appendChild(this.graphLabel4b);
 	
-	this.graphGrid1 = makeLine(1, 0, -80, 0, 80).setFill('#888');
+	this.graphGrid1 = makeLine(1, 0, -90, 0, 90).setFill('#888');
 	this.appendChild(this.graphGrid1);
 	
-	this.graphGrid2 = makeLine(1, 80, 0, -80, 0).setFill('#888');
+	this.graphGrid2 = makeLine(1, 90, 0, -90, 0).setFill('#888');
 	this.appendChild(this.graphGrid2);
 	
 	// Show normalized plot?
@@ -88,44 +82,9 @@ biofuelsGame.healthPopup = function()
 	this.graph2.addPoint(new goog.math.Coordinate(coord, 0));
 	this.graph2.setStroke(new lime.fill.Stroke(2, '#d5d'));
 	this.appendChild(this.graph2);
-	
-	//---------------------------
-	// Add click event
-	//---------------------------
-	goog.events.listen(this, ['mousedown', 'touchstart'], function(evt) 
-	{
-		delete this.popupSelectionResult;
-	
-		goog.events.removeAll(this);
-		this.getParent().dispelPopup();
-		
-	}); // <mousedown listen event
-	
-	
-	//---------------------------
-	// Add mouse over event
-	//---------------------------
-	goog.events.listen(this, 'mouseover', function(evt) 
-	{
-		// Add a new temporary listener that watches mousemove and if mouse off of
-		//	sprite, then revert sprite to normal/default state and clear the
-		//	mousemove listener
-		var key = goog.events.listen(this.getScene(), 'mousemove', 
-			function(e) 
-			{
-				 if (!this.hitTest(e))
-				 {
-					 goog.events.unlistenByKey(key);
-					 goog.events.removeAll(this);
-				 	 this.getParent().dispelPopup();
-				 }	
-		
-			},
-		null,this);
-	}); // <mouseover listen event
 };
 
-goog.inherits(biofuelsGame.healthPopup, lime.RoundedRect);
+goog.inherits(biofuelsGame.clientHealth, lime.RoundedRect);
 
 
 
