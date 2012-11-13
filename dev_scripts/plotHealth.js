@@ -34,7 +34,7 @@ biofuelsGame.plotHealth.prototype.enableClickInteraction = function()
 		
 		this.popup = new biofuelsGame.healthPopup();
 		// Center popup on the planting icon
-		this.popup.setPosition(-55,-55);  
+		this.popup.setPosition(-50,-55);  
 		
 		// bah, should already be set up correctly if mouse overs were working....
 		this.setOpacity(1).setScale(this.MOUSEOVER_SCALE);

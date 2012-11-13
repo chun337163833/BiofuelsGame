@@ -25,7 +25,7 @@ function makeLabel(text, pos_x, pos_y, size, color, align)
 }
 
 //--------------------------------------------------------------------------------------------------
-// Plant popup subclass - subclass of lime.sprite
+// plot health popup subclass - subclass of roundedRect
 //--------------------------------------------------------------------------------------------------
 biofuelsGame.healthPopup = function() 
 {
@@ -33,7 +33,7 @@ biofuelsGame.healthPopup = function()
     lime.RoundedRect.call(this);
         
     this.setSize(180,180).setRadius(10);
-    this.setFill('#FEF8D0').setOpacity(0.9);
+    this.setFill('#FEF8D0').setOpacity(0.8);
 	this.setStroke(new lime.fill.Stroke(10, '#664'));     
     this.setScale(0.25);
 	this.runAction( new lime.animation.ScaleTo(1).setDuration(0.1) );

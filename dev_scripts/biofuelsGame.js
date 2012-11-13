@@ -9,6 +9,7 @@ goog.require('lime.Sprite');
 goog.require('lime.audio.Audio');
 
 goog.require('biofuelsGame.field');
+goog.require('biofuelsGame.contractPane');
 
 // lame globals
 var clickSound;
@@ -33,6 +34,11 @@ biofuelsGame.start = function(){
     	}
     }
  
+    var roundRect = new lime.RoundedRect().setSize(452,620).setRadius(12).setAnchorPoint(0.5,0).setPosition(225,40);
+//    this.setFill('#FEF8D0').setOpacity(0.8);
+	roundRect.setStroke(new lime.fill.Stroke(12, '#434325'));     
+	scene.appendChild(roundRect);
+	
     var countOfFields = 6, x = 0, y = 0;
     
     // layer some fields on top
@@ -46,6 +52,14 @@ biofuelsGame.start = function(){
     	}
     }
 
+    var cornContract = new biofuelsGame.contractPane("Corn Contract", 'assets/corn_icon.png');
+    cornContract.setPosition(560, 40);
+    scene.appendChild(cornContract);
+
+    var switchgrassContract = new biofuelsGame.contractPane("Switchgrass Contract", 'assets/grass_icon.png');
+    switchgrassContract.setPosition(560, 140);
+    scene.appendChild(switchgrassContract);
+    
     director.makeMobileWebAppCapable();
 	    
     // set current scene active
