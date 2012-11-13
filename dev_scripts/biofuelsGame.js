@@ -8,7 +8,7 @@ goog.require('lime.Layer');
 goog.require('lime.Sprite');
 goog.require('lime.audio.Audio');
 
-goog.require('biofuelsGame.field');
+goog.require('biofuelsGame.fieldPlayspace');
 goog.require('biofuelsGame.contractPane');
 goog.require('biofuelsGame.clientHealth');
 goog.require('biofuelsGame.gamePhaseDisplay');
@@ -22,6 +22,8 @@ var popupSound;
 //---------------------------------------------------------
 biofuelsGame.start = function(){
 
+	var NUM_FIELDS = 4;
+	
     var director = new lime.Director(document.body,1024,768);
     var scene = new lime.Scene();
 
@@ -29,35 +31,9 @@ biofuelsGame.start = function(){
     gamePhaseDisplay.setPosition(330, 50);
     scene.appendChild(gamePhaseDisplay);
 
-    // fill in a grass background
-    for (var y = 0; y < 4; y++) {
-    	for (var x = 0; x < 3; x++ ) {
-    		var backdrop = new lime.Sprite().setFill('assets/grass.png');
-    		backdrop.setSize(151,151); // bah, make 1 pixel larger to prevent texture seams
-    		backdrop.setAnchorPoint(0,0); // set upper left corner
-    		backdrop.setPosition(x * 150, y * 150 + 100);
-    		scene.appendChild(backdrop);
-    	}
-    }
- 
-    var roundRect = new lime.RoundedRect().setSize(452,620).setRadius(12).setAnchorPoint(0.5,0).setPosition(225,90);
-//    this.setFill('#FEF8D0').setOpacity(0.8);
-	roundRect.setStroke(new lime.fill.Stroke(12, '#565636'));//#434325'));     
-	scene.appendChild(roundRect);
-	
-    var countOfFields = 6, x = 0, y = 0;
-    
-    // layer some fields on top
-    for (var fieldIndex = 0; fieldIndex < countOfFields; fieldIndex++ ) {
-    	var field = new biofuelsGame.field().setPosition(x * 200 + 125, y * 200 + 200);
-    	scene.appendChild(field);
-    	x++;
-    	if (x > 1) {
-    		x = 0;
-    		y++;
-    	}
-    }
-
+    this.fieldPlayspace = new biofuelsGame.fieldPlayspace(NUM_FIELDS).setAnchorPoint(0.5, 0).setPosition(0, 100);
+  	scene.appendChild(this.fieldPlayspace);
+  	
     var cornContract = new biofuelsGame.contractPane("Corn Contract", 'assets/corn_icon.png');
     cornContract.setPosition(560, 90);
     scene.appendChild(cornContract);
