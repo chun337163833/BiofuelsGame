@@ -32,33 +32,33 @@ biofuelsGame.clientHealth = function()
     // must call super constructor
     lime.RoundedRect.call(this);
         
-    this.setSize(200,200).setRadius(10);
+    this.setSize(200,200).setRadius(12);
     this.setFill('#FEF8D0');
-	this.setStroke(new lime.fill.Stroke(10, '#664'));     
+	this.setStroke(new lime.fill.Stroke(12, '#664'));     
 	
-	this.graphTitle = makeLabel('Farmer Sustainability', 0, -95, 12, '#fff', 'center');
+	this.graphTitle = makeLabel('Farmer Sustainability', 0, -95, 13, '#FFF', 'center');
 	this.appendChild(this.graphTitle);
 	
-	this.graphLabel1 = makeLabel('Emissions', 0, -85, 10, '#777', 'center');
+	this.graphLabel1 = makeLabel('Emissions', 0, -80, 10, '#777', 'center');
 	this.appendChild(this.graphLabel1);
 
-	this.graphLabel2 = makeLabel('Economic Value', 0, 85, 10, '#777', 'center');
+	this.graphLabel2 = makeLabel('Economic Value', 0, 80, 10, '#777', 'center');
 	this.appendChild(this.graphLabel2);
 
-	this.graphLabel3a = makeLabel('Soil', 75, -5, 10, '#777', 'center');
+	this.graphLabel3a = makeLabel('Soil', 70, -5, 10, '#777', 'center');
 	this.appendChild(this.graphLabel3a);
-	this.graphLabel3b = makeLabel('Health', 75, 5, 10, '#777', 'center');
+	this.graphLabel3b = makeLabel('Health', 70, 5, 10, '#777', 'center');
 	this.appendChild(this.graphLabel3b);
 	
-	this.graphLabel4a = makeLabel('Energy', -69, -5, 10, '#777', 'center');
+	this.graphLabel4a = makeLabel('Energy', -64, -5, 10, '#777', 'center');
 	this.appendChild(this.graphLabel4a);
-	this.graphLabel4b = makeLabel('Potential', -69, 5, 10, '#777', 'center');
+	this.graphLabel4b = makeLabel('Potential', -64, 5, 10, '#777', 'center');
 	this.appendChild(this.graphLabel4b);
 	
-	this.graphGrid1 = makeLine(1, 0, -90, 0, 90).setFill('#888');
+	this.graphGrid1 = makeLine(1, 0, -85, 0, 85).setFill('#888');
 	this.appendChild(this.graphGrid1);
 	
-	this.graphGrid2 = makeLine(1, 90, 0, -90, 0).setFill('#888');
+	this.graphGrid2 = makeLine(1, 85, 0, -85, 0).setFill('#888');
 	this.appendChild(this.graphGrid2);
 	
 	// Show normalized plot?

@@ -16,7 +16,7 @@ biofuelsGame.contractPane = function(title, iconAsset)
     lime.RoundedRect.call(this);
         
     this.setSize(200,90).setRadius(12).setAnchorPoint(0.5,0);
-    this.setFill('#FEF8D0').setOpacity(0.8);
+    this.setFill('#FEF8D0');
 	this.setStroke(new lime.fill.Stroke(12, '#664'));     
 	
 	this.icon = new lime.Sprite();

@@ -42,7 +42,7 @@ biofuelsGame.start = function(){
  
     var roundRect = new lime.RoundedRect().setSize(452,620).setRadius(12).setAnchorPoint(0.5,0).setPosition(225,90);
 //    this.setFill('#FEF8D0').setOpacity(0.8);
-	roundRect.setStroke(new lime.fill.Stroke(12, '#434325'));     
+	roundRect.setStroke(new lime.fill.Stroke(12, '#565636'));//#434325'));     
 	scene.appendChild(roundRect);
 	
     var countOfFields = 6, x = 0, y = 0;
