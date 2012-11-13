@@ -38,7 +38,7 @@ biofuelsGame.healthPopup = function()
     this.setScale(0.25);
 	this.runAction( new lime.animation.ScaleTo(1).setDuration(0.1) );
 	
-	this.graphTitle = makeLabel('Individual Sustainability', 0, -85, 10, '#000', 'center');
+	this.graphTitle = makeLabel('Field Sustainability', 0, -85, 10, '#000', 'center');
 	this.appendChild(this.graphTitle);
 	
 	this.graphLabel1 = makeLabel('Emissions', 0, -75, 10, '#777', 'center');
@@ -70,15 +70,20 @@ biofuelsGame.healthPopup = function()
 	this.graph.addPoint(new goog.math.Coordinate(0,30));
 	this.graph.addPoint(new goog.math.Coordinate(-30, 0));
 	this.graph.setStroke(new lime.fill.Stroke(1, '#35d'));
+	this.graph.setFill(30,50,100,0.25);
 	this.appendChild(this.graph);
 
-	this.graph = new lime.Polygon();
-	this.graph.addPoint(new goog.math.Coordinate(0, -50));
-	this.graph.addPoint(new goog.math.Coordinate(20,0));
-	this.graph.addPoint(new goog.math.Coordinate(0,40));
-	this.graph.addPoint(new goog.math.Coordinate(-10, 0));
-	this.graph.setStroke(new lime.fill.Stroke(2, '#d5d'));
-	this.appendChild(this.graph);
+	this.graph2 = new lime.Polygon();
+	var coord = Math.random() * (-70 - -5) + -5;
+	this.graph2.addPoint(new goog.math.Coordinate(0, coord));
+	var coord = Math.random() * (70 - 5) + 5;
+	this.graph2.addPoint(new goog.math.Coordinate(coord,0));
+	var coord = Math.random() * (70 - 5) + 5;
+	this.graph2.addPoint(new goog.math.Coordinate(0,coord));
+	var coord = Math.random() * (-70 - -5) + -5;
+	this.graph2.addPoint(new goog.math.Coordinate(coord, 0));
+	this.graph2.setStroke(new lime.fill.Stroke(2, '#d5d'));
+	this.appendChild(this.graph2);
 	
 	//---------------------------
 	// Add click event
