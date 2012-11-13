@@ -33,10 +33,14 @@ biofuelsGame.healthPopup = function()
     lime.RoundedRect.call(this);
         
     this.setSize(180,180).setRadius(10);
-    this.setFill('#FEF8D0').setOpacity(0.8);
+    this.setFill('#FEF8D0').setOpacity(0.9);
 	this.setStroke(new lime.fill.Stroke(10, '#664'));     
     this.setScale(0.25);
 	this.runAction( new lime.animation.ScaleTo(1).setDuration(0.1) );
+	
+	this.closeSprite = new lime.Sprite().setFill('assets/close_icon.png');
+	this.closeSprite.setPosition(95,-95).setAnchorPoint(1,0).setOpacity(0.8);
+	this.appendChild(this.closeSprite);
 	
 	this.graphTitle = makeLabel('Field Sustainability', 0, -85, 10, '#000', 'center');
 	this.appendChild(this.graphTitle);

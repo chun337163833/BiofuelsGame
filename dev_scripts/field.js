@@ -5,7 +5,7 @@ goog.require('lime.Layer');
 
 goog.require('biofuelsGame.fertilizer');
 goog.require('biofuelsGame.plantAction');
-goog.require('biofuelsGame.plotHealth');
+goog.require('biofuelsGame.fieldHealthAction');
 
 //--------------------------------------------------------------------------------------------------
 // Field representation
@@ -67,8 +67,8 @@ biofuelsGame.field = function()
     this.appendChild(this.plantActionIcon);
 
     // health of field can draw over everything on the field so add that last
-    this.plotHealthIcon = new biofuelsGame.plotHealth().setPosition(this.PLOT_HEALTH_X, this.PLOT_HEALTH_Y);
-    this.appendChild(this.plotHealthIcon);
+    this.fieldHealthIcon = new biofuelsGame.fieldHealthAction().setPosition(this.PLOT_HEALTH_X, this.PLOT_HEALTH_Y);
+    this.appendChild(this.fieldHealthIcon);
 };
 
 goog.inherits(biofuelsGame.field, lime.Sprite);
@@ -121,7 +121,7 @@ biofuelsGame.field.prototype.disableFieldInteractionsForPlantPopup = function()
 {
 	this.fertilizerIcon.disableInteractions(1); // revert sprite if active
 	this.plantActionIcon.disableInteractions(0); // don't revert active sprite
-	this.plotHealthIcon.disableInteractions(1);// revert sprite if active
+	this.fieldHealthIcon.disableInteractions(1);// revert sprite if active
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -129,7 +129,7 @@ biofuelsGame.field.prototype.disableFieldInteractionsForHealthPopup = function()
 {
 	this.fertilizerIcon.disableInteractions(1); // revert sprite if active
 	this.plantActionIcon.disableInteractions(1); // revert sprite if active
-	this.plotHealthIcon.disableInteractions(0);// don't revert active sprite
+	this.fieldHealthIcon.disableInteractions(0);// don't revert active sprite
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -137,5 +137,5 @@ biofuelsGame.field.prototype.enableFieldInteractions = function()
 {
 	this.fertilizerIcon.enableInteractions();
 	this.plantActionIcon.enableInteractions();
-	this.plotHealthIcon.enableInteractions();	
+	this.fieldHealthIcon.enableInteractions();	
 }

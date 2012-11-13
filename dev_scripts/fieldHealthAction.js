@@ -1,12 +1,12 @@
-goog.provide('biofuelsGame.plotHealth');
+goog.provide('biofuelsGame.fieldHealthAction');
 
 goog.require('biofuelsGame.mouseOverSprite');
-goog.require('biofuelsGame.healthPopup');
+goog.require('biofuelsGame.fieldHealthPopup');
 
 //---------------------------------------------------------
-// Plot Health icon subclass - subclass of lime.sprite
+// Field health icon subclass - subclass of lime.sprite
 //---------------------------------------------------------
-biofuelsGame.plotHealth = function() 
+biofuelsGame.fieldHealthAction = function() 
 {
     // must call super constructor
     biofuelsGame.mouseOverSprite.call(this);
@@ -18,10 +18,10 @@ biofuelsGame.plotHealth = function()
 	this.enableClickInteraction();	
 };
 
-goog.inherits(biofuelsGame.plotHealth, biofuelsGame.mouseOverSprite);
+goog.inherits(biofuelsGame.fieldHealthAction, biofuelsGame.mouseOverSprite);
 
 //--------------------------------------------------------------------------------------------------
-biofuelsGame.plotHealth.prototype.enableClickInteraction = function() 
+biofuelsGame.fieldHealthAction.prototype.enableClickInteraction = function() 
 {	
 	// Add click event
 	goog.events.listen(this, ['mousedown', 'touchstart'], function(evt) 
@@ -32,7 +32,7 @@ biofuelsGame.plotHealth.prototype.enableClickInteraction = function()
 		// get field and disable interactions so the popup can work
 		this.getParent().disableFieldInteractionsForHealthPopup();
 		
-		this.popup = new biofuelsGame.healthPopup();
+		this.popup = new biofuelsGame.fieldHealthPopup();
 		// Center popup on the planting icon
 		this.popup.setPosition(-50,-55);  
 		
@@ -44,14 +44,14 @@ biofuelsGame.plotHealth.prototype.enableClickInteraction = function()
 };
 
 //--------------------------------------------------------------------------------------------------
-biofuelsGame.plotHealth.prototype.enableInteractions = function() 
+biofuelsGame.fieldHealthAction.prototype.enableInteractions = function() 
 {
 	biofuelsGame.mouseOverSprite.prototype.enableMouseOver.call(this);
 	this.enableClickInteraction();
 };
 
 //--------------------------------------------------------------------------------------------------
-biofuelsGame.plotHealth.prototype.dispelPopup = function() 
+biofuelsGame.fieldHealthAction.prototype.dispelPopup = function() 
 {
 	if (typeof this.popup === 'undefined') {
 		return;
