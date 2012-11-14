@@ -35,7 +35,7 @@ biofuelsGame.gamePhaseDisplay = function()
 	this.phase2Marker = new lime.Circle().setPosition(0, 5).setSize(15,15).setFill('#fff').setStroke(new lime.fill.Stroke(1, '#000'));
 	this.appendChild(this.phase2Marker);
 	
-	this.phase3Title = makeLabel('Round Wrapup', 250, -10, 10, '#000', 'center' );
+	this.phase3Title = makeLabel('Round Wrap-Up', 250, -10, 10, '#000', 'center' );
 	this.appendChild(this.phase3Title);
 	
 	this.phase3Marker = new lime.Circle().setPosition(250, 5).setSize(15,15).setFill('#fff').setStroke(new lime.fill.Stroke(1, '#000'));
