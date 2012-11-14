@@ -13,10 +13,13 @@ biofuelsGame.plantAction = function()
     // must call super constructor
     biofuelsGame.mouseOverSprite.call(this);
 	
-    this.setFill('assets/planting_icon.png');
-    this.setSize(50,50);
+    this.setSize(50,50).setFill('assets/planting_icon.png');;
     this.setOpacity(this.DEFAULT_OPACITY);
 	
+    // center popup on the planting icon
+    this.plantActionPopup = new biofuelsGame.plantPopup().setPosition(0,0);
+    this.appendChild(this.plantActionPopup);
+    
 	this.enableClickInteraction();	
 };
 
@@ -34,12 +37,10 @@ biofuelsGame.plantAction.prototype.enableClickInteraction = function()
 		// get field and disable interactions so the popup can work
 		this.getParent().disableFieldInteractionsForPlantPopup();
 		
-		this.popup = new biofuelsGame.plantPopup();
-		// Center popup on the planting icon
-		this.popup.setPosition(0,0); 
 		// bah, should already be set up correctly if mouse overs were working....
 		this.setOpacity(1).setScale(this.MOUSEOVER_SCALE);
-		this.appendChild(this.popup);
+		
+		this.plantActionPopup.showPopup();
 		
 	}); // <mousedown listen event
 };
@@ -54,14 +55,13 @@ biofuelsGame.plantAction.prototype.enableInteractions = function()
 //--------------------------------------------------------------------------------------------------
 biofuelsGame.plantAction.prototype.dispelPopup = function() 
 {
-	if (typeof this.popup === 'undefined') {
+	// TODO: forget why this was needed...verify that it is even necessary...
+	if (this.plantActionPopup.getHidden()) {
 		return;
 	}	
-	this.popup.runAction( new lime.animation.FadeTo(0).setDuration(0.1) );
 
-	this.getParent().setUpCrop(this.popup.popupSelectionResult);
+	this.getParent().setUpCrop(this.plantActionPopup.popupSelectionResult);
 
-	delete this.popup;
 	this.getParent().enableFieldInteractions();
 	this.animateToDefaults();
 };

@@ -15,6 +15,10 @@ biofuelsGame.fieldHealthAction = function()
     this.setSize(50,50);
     this.setOpacity(this.DEFAULT_OPACITY);
 
+    // center popup on the planting icon
+    this.healthActionPopup = new biofuelsGame.fieldHealthPopup().setPosition(-50,-55);
+    this.appendChild(this.healthActionPopup);
+
 	this.enableClickInteraction();	
 };
 
@@ -32,13 +36,10 @@ biofuelsGame.fieldHealthAction.prototype.enableClickInteraction = function()
 		// get field and disable interactions so the popup can work
 		this.getParent().disableFieldInteractionsForHealthPopup();
 		
-		this.popup = new biofuelsGame.fieldHealthPopup();
-		// Center popup on the planting icon
-		this.popup.setPosition(-50,-55);  
+		this.healthActionPopup.showPopup();
 		
 		// bah, should already be set up correctly if mouse overs were working....
 		this.setOpacity(1).setScale(this.MOUSEOVER_SCALE);
-		this.appendChild(this.popup);
 				
 	}); // <mousedown listen event
 };
@@ -53,12 +54,7 @@ biofuelsGame.fieldHealthAction.prototype.enableInteractions = function()
 //--------------------------------------------------------------------------------------------------
 biofuelsGame.fieldHealthAction.prototype.dispelPopup = function() 
 {
-	if (typeof this.popup === 'undefined') {
-		return;
-	}	
-	this.popup.runAction( new lime.animation.FadeTo(0).setDuration(0.1) );
-
-	delete this.popup;
+	this.healthActionPopup.hidePopup();
 	this.getParent().enableFieldInteractions();
 	this.animateToDefaults();
 };

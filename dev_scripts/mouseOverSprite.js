@@ -7,7 +7,7 @@ goog.require('lime.animation.ScaleTo');
 //--------------------------------------------------------------------------------------------------
 // Mouse over sprite subclass - subclass of lime.sprite
 //--------------------------------------------------------------------------------------------------
-biofuelsGame.mouseOverSprite = function() 
+biofuelsGame.mouseOverSprite = function(startDisabled) 
 {
     // must call super constructor
     lime.Sprite.call(this);
@@ -21,7 +21,10 @@ biofuelsGame.mouseOverSprite = function()
     this.MOUSEOVER_OPACITY = 1.0;
 
     this.setOpacity(this.DEFAULT_OPACITY);
-    this.enableMouseOver();
+    if (!goog.isDef(startDisabled) || (goog.isDef(startDisabled) && !startDisabled))  
+    {
+    	this.enableMouseOver();
+    }
 };
 
 goog.inherits(biofuelsGame.mouseOverSprite, lime.Sprite);

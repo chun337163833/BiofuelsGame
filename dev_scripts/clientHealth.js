@@ -31,45 +31,68 @@ biofuelsGame.clientHealth = function()
 {
     // must call super constructor
     lime.RoundedRect.call(this);
-        
+
+    // graph "container" styling
     this.setSize(200,200).setRadius(12);
-    this.setFill('#FEF8D0');
-	this.setStroke(new lime.fill.Stroke(12, '#664'));     
+    this.setFill('#FEF8D0').setStroke(new lime.fill.Stroke(12, '#664'));     
+    
+    // graph element properties - TODO: any common stylings should end up in one place, ideally
+	var TITLE_FONT_SIZE = 13;
+	var TITLE_FONT_COLOR = '#fff';
 	
-	this.graphTitle = makeLabel('Farmer Sustainability', 0, -95, 13, '#FFF', 'center');
-	this.appendChild(this.graphTitle);
+	var LABEL_FONT_SIZE = 10;
+	var LABEL_FONT_COLOR = '#777';
 	
-	this.graphLabel1 = makeLabel('Emissions', 0, -80, 10, '#777', 'center');
-	this.appendChild(this.graphLabel1);
+	var GRID_WIDTH = 1;
+	var GRID_COLOR = '#888';
+	
+	// fill color and stroke styles for the normalized plot
+	var NORM_STROKE_WIDTH = 1;
+	var NORM_STROKE_COLOR = '#35d'; // blueish
+	
+	var NORM_FILL_R = 30;
+	var NORM_FILL_G = 50;
+	var NORM_FILL_B = 100;
+	var NORM_FILL_A = 0.25;
+	
+	// The actual data plot style (currently not filled)
+	var PLOT_STROKE_WIDTH = 2;
+	var PLOT_STROKE_COLOR  = '#d5d';
+        	
+	var graphTitle = makeLabel('Farmer Sustainability', 0, -95, TITLE_FONT_SIZE, TITLE_FONT_COLOR, 'center');
+	this.appendChild(graphTitle);
+	
+	var gridLine = makeLine(GRID_WIDTH, 0, -85, 0, 85).setFill(GRID_COLOR);
+	this.appendChild(gridLine);
+	
+	gridLine = makeLine(GRID_WIDTH, 85, 0, -85, 0).setFill(GRID_COLOR);
+	this.appendChild(gridLine);
 
-	this.graphLabel2 = makeLabel('Economic Value', 0, 80, 10, '#777', 'center');
-	this.appendChild(this.graphLabel2);
+	var graphLabel = makeLabel('Emissions', 0, -80, LABEL_FONT_SIZE, LABEL_FONT_COLOR, 'center');
+	this.appendChild(graphLabel);
+	
+	graphLabel = makeLabel('Economic Value', 0, 80, LABEL_FONT_SIZE, LABEL_FONT_COLOR, 'center');
+	this.appendChild(graphLabel);
 
-	this.graphLabel3a = makeLabel('Soil', 70, -5, 10, '#777', 'center');
-	this.appendChild(this.graphLabel3a);
-	this.graphLabel3b = makeLabel('Health', 70, 5, 10, '#777', 'center');
-	this.appendChild(this.graphLabel3b);
+	graphLabel = makeLabel('Soil', 70, -5, LABEL_FONT_SIZE, LABEL_FONT_COLOR, 'center');
+	this.appendChild(graphLabel);
+	graphLabel = makeLabel('Health', 70, 5, LABEL_FONT_SIZE, LABEL_FONT_COLOR, 'center');
+	this.appendChild(graphLabel);
 	
-	this.graphLabel4a = makeLabel('Energy', -64, -5, 10, '#777', 'center');
-	this.appendChild(this.graphLabel4a);
-	this.graphLabel4b = makeLabel('Potential', -64, 5, 10, '#777', 'center');
-	this.appendChild(this.graphLabel4b);
-	
-	this.graphGrid1 = makeLine(1, 0, -85, 0, 85).setFill('#888');
-	this.appendChild(this.graphGrid1);
-	
-	this.graphGrid2 = makeLine(1, 85, 0, -85, 0).setFill('#888');
-	this.appendChild(this.graphGrid2);
-	
+	graphLabel = makeLabel('Energy', -64, -5, LABEL_FONT_SIZE, LABEL_FONT_COLOR, 'center');
+	this.appendChild(graphLabel);
+	graphLabel = makeLabel('Potential', -64, 5, LABEL_FONT_SIZE, LABEL_FONT_COLOR, 'center');
+	this.appendChild(graphLabel);
+		
 	// Show normalized plot?
-	this.graph = new lime.Polygon();
-	this.graph.addPoint(new goog.math.Coordinate(0, -30));
-	this.graph.addPoint(new goog.math.Coordinate(30,0));
-	this.graph.addPoint(new goog.math.Coordinate(0,30));
-	this.graph.addPoint(new goog.math.Coordinate(-30, 0));
-	this.graph.setStroke(new lime.fill.Stroke(1, '#35d'));
-	this.graph.setFill(30,50,100,0.25);
-	this.appendChild(this.graph);
+	var plot = new lime.Polygon();
+	plot.addPoint(new goog.math.Coordinate(0, -30));
+	plot.addPoint(new goog.math.Coordinate(30,0));
+	plot.addPoint(new goog.math.Coordinate(0,30));
+	plot.addPoint(new goog.math.Coordinate(-30, 0));
+	plot.setStroke(new lime.fill.Stroke(NORM_STROKE_WIDTH, NORM_STROKE_COLOR));
+	plot.setFill(NORM_FILL_R, NORM_FILL_G, NORM_FILL_B, NORM_FILL_A);
+	this.appendChild(plot);
 
 	this.graph2 = new lime.Polygon();
 	var coord = Math.random() * (-70 - -5) + -5;
@@ -80,11 +103,12 @@ biofuelsGame.clientHealth = function()
 	this.graph2.addPoint(new goog.math.Coordinate(0,coord));
 	var coord = Math.random() * (-70 - -5) + -5;
 	this.graph2.addPoint(new goog.math.Coordinate(coord, 0));
-	this.graph2.setStroke(new lime.fill.Stroke(2, '#d5d'));
+	this.graph2.setStroke(new lime.fill.Stroke(PLOT_STROKE_WIDTH, PLOT_STROKE_COLOR));
 	this.appendChild(this.graph2);
 };
 
 goog.inherits(biofuelsGame.clientHealth, lime.RoundedRect);
 
-
+// TODO: some method to update the graph
+//biofuelsGame.clientHealth.prototype.updateClientHealthGraph = function(datapoints...)
 

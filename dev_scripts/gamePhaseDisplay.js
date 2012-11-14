@@ -35,7 +35,7 @@ biofuelsGame.gamePhaseDisplay = function()
 	this.setUpPhases();	
 	
 	//---------------------------
-	// TEMP ... Add click event
+	// TEMP ... Add click event just to test the animation basics
 	//---------------------------
 	goog.events.listen(this, ['mousedown', 'touchstart'], function(evt) 
 	{
