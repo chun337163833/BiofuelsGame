@@ -7,26 +7,6 @@ goog.require('lime.fill.Stroke');
 goog.require('lime.Polygon');
 goog.require('lime.Label');
 
-// TEMP: just to get some data to graph
-//--------------------------------------------------------------------------------------------------
-function bakeFakeEarningsData(yearCount, farmerCount)
-{
-	var minDollars = 10000;
-	var maxDollars = 100000;
-	var years = new Array(yearCount);
-	
-	for (var yr = 0; yr < yearCount; yr++)
-	{
-		years[yr] = new Array(farmerCount);
-		for (var idx = 0; idx < farmerCount; idx++)
-		{
-			years[yr][idx] = Math.random() * (maxDollars - minDollars) + minDollars;
-		}
-	}
-	
-	return years;
-}
-
 //--------------------------------------------------------------------------------------------------
 // Aggregate earnings subclass - subclass of roundedRect
 //--------------------------------------------------------------------------------------------------

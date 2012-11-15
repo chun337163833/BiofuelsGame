@@ -11,16 +11,23 @@ goog.require('lime.Label');
 //--------------------------------------------------------------------------------------------------
 function bakeFakeEarningsData(yearCount, farmerCount)
 {
-	var minDollars = 10000;
-	var maxDollars = 100000;
+	var minDollars = 20000;
+	var maxDollars = 80000;
 	var years = new Array(yearCount);
 	
 	for (var yr = 0; yr < yearCount; yr++)
 	{
 		years[yr] = new Array(farmerCount);
-		for (var idx = 0; idx < farmerCount; idx++)
+	}
+	
+	for (var idx = 0; idx < farmerCount; idx++)
+	{
+		var farmerBase = Math.random() * (maxDollars - minDollars) + minDollars
+		for (var yr = 0; yr < yearCount; yr++)
 		{
-			years[yr][idx] = Math.random() * (maxDollars - minDollars) + minDollars;
+			years[yr][idx] = farmerBase;
+			farmerBase += (Math.random() * (15000 - -9000) + -9000);
+			if (farmerBase <= 1000) farmerBase = 1000;
 		}
 	}
 	
@@ -153,7 +160,32 @@ biofuelsGame.localEarningsGraph.prototype.updateGraph = function(earningsArray)
 	var bottom = this.HALF_SIZE_Y - this.FRAME_BORDER_SIZE + bottomPad;
 	
 	var yearSpacing = (right - left) / (earningsArray.length - 1);
+
+	// get range (mostly just care about max) and expand max a bit so it doesn't end up exactly at the top 
+	var dollarRange = getDollarRange(earningsArray);
+	var maxDollar = dollarRange[1] * 1.1;
+	var dollarScaling = (bottom - top) / maxDollar;
+	var horzLines = 8;
+
+	var atX = left;
+	// draw the min-max range of all farmers behind the grid since there can easily be seams between the
+	//	polygon slices.  Drawing the grid on top helps hide that aspect
+	for (var year = 0; year < earningsArray.length - 1; year++)
+	{
+		var rangeNow = getDollarRangeForYear(earningsArray, year);
+		var rangeNext = getDollarRangeForYear(earningsArray, year + 1);
+
+		var poly = new lime.Polygon().setFill('#999968');
+		// bah, bloating up the polygon by a pixel or so on either side to reduce seams
+		poly.addPoint(new goog.math.Coordinate(atX - 1, bottom - rangeNow[1] * dollarScaling));
+		poly.addPoint(new goog.math.Coordinate(atX - 1, bottom - rangeNow[0] * dollarScaling));
+		poly.addPoint(new goog.math.Coordinate(atX + 1 + yearSpacing, bottom - rangeNext[0] * dollarScaling));
+		poly.addPoint(new goog.math.Coordinate(atX + 1 + yearSpacing, bottom - rangeNext[1] * dollarScaling));
+		this.appendChild(poly);
 		
+		atX += yearSpacing;
+	}
+
 	var atX = left;
 	for (var year = 0; year < earningsArray.length; year++)
 	{
@@ -166,11 +198,6 @@ biofuelsGame.localEarningsGraph.prototype.updateGraph = function(earningsArray)
 		atX += yearSpacing;
 	}
 	
-	// get range (mostly just care about max) and expand max a bit so it doesn't end up exactly at the top 
-	var dollarRange = getDollarRange(earningsArray);
-	var maxDollar = dollarRange[1] * 1.1;
-	var dollarScaling = (bottom - top) / maxDollar;
-	var horzLines = 8;
 	
 	for (var idx = 0; idx < horzLines; idx++)
 	{
@@ -182,22 +209,6 @@ biofuelsGame.localEarningsGraph.prototype.updateGraph = function(earningsArray)
 		
 		var label = makeLabel("$" + (dollar/1000).toFixed(0) + "k", left - (leftPad / 2), atY, 10, '#000', 'center');
 		this.appendChild(label);
-	}
-
-	var atX = left;
-	for (var year = 0; year < earningsArray.length - 1; year++)
-	{
-		var rangeNow = getDollarRangeForYear(earningsArray, year);
-		var rangeNext = getDollarRangeForYear(earningsArray, year + 1);
-
-		var poly = new lime.Polygon().setFill('#885').setOpacity(0.5);
-		poly.addPoint(new goog.math.Coordinate(atX, bottom - rangeNow[1] * dollarScaling));
-		poly.addPoint(new goog.math.Coordinate(atX, bottom - rangeNow[0] * dollarScaling));
-		poly.addPoint(new goog.math.Coordinate(atX + yearSpacing, bottom - rangeNext[0] * dollarScaling));
-		poly.addPoint(new goog.math.Coordinate(atX + yearSpacing, bottom - rangeNext[1] * dollarScaling));
-		this.appendChild(poly);
-		
-		atX += yearSpacing;
 	}
 		
 	var strokeSize = 2;

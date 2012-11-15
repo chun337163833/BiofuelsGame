@@ -31,26 +31,26 @@ biofuelsGame.start = function()
     var scene = new lime.Scene();
 
     var gamePhaseDisplay = new biofuelsGame.gamePhaseDisplay();
-    gamePhaseDisplay.setPosition(330, 50);
+    gamePhaseDisplay.setPosition(330, 40);
     scene.appendChild(gamePhaseDisplay);
 
-    this.fieldPlayspace = new biofuelsGame.fieldPlayspace(NUM_FIELDS).setAnchorPoint(0.5, 0).setPosition(0, 100);
+    this.fieldPlayspace = new biofuelsGame.fieldPlayspace(NUM_FIELDS).setAnchorPoint(0.5, 0).setPosition(0, 90);
   	scene.appendChild(this.fieldPlayspace);
   	
     var cornContract = new biofuelsGame.contractPane("Corn Contract", 'assets/corn_icon.png');
-    cornContract.setPosition(560, 90);
+    cornContract.setPosition(560, 80);
     scene.appendChild(cornContract);
 
     var switchgrassContract = new biofuelsGame.contractPane("Switchgrass Contract", 'assets/grass_icon.png');
-    switchgrassContract.setPosition(560, 190);
+    switchgrassContract.setPosition(560, 180);
     scene.appendChild(switchgrassContract);
     
     var farmerHealth = new biofuelsGame.clientHealth();
-    farmerHealth.setPosition(560,390);
+    farmerHealth.setPosition(560,360);
     scene.appendChild(farmerHealth);
         
     var graphEarnings = new biofuelsGame.localEarningsGraph();
-    graphEarnings.setPosition(560,570);
+    graphEarnings.setPosition(560,520);
     scene.appendChild(graphEarnings);
     
     director.makeMobileWebAppCapable();
