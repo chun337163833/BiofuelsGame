@@ -6,8 +6,7 @@ goog.require('lime.Sprite');
 
 goog.require('biofuelsGame.field');
 
-//---------------------------------------------------------
-// Main entrypoint
+// Grassy fields, oh my
 //---------------------------------------------------------
 biofuelsGame.fieldPlayspace = function(fieldCount)
 {

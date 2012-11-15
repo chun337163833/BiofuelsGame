@@ -8,23 +8,6 @@ goog.require('lime.Polygon');
 goog.require('lime.Label');
 
 //--------------------------------------------------------------------------------------------------
-function makeLine(size, x1, y1, x2, y2)
-{ 
-  var dx = Math.abs(x2-x1); 
-  var dy = Math.abs(y2-y1); 
-  var width = Math.sqrt(dx*dx+dy*dy)+size; 
-  return new lime.Sprite().setSize(width, size).setAnchorPoint(size/2/width, .5).setRotation( 
-    -Math.atan2(y2-y1, x2-x1)*180/Math.PI 
-    ).setPosition(x1, y1); 
-} 
-
-//--------------------------------------------------------------------------------------------------
-function makeLabel(text, pos_x, pos_y, size, color, align) 
-{
-	return new lime.Label(text).setPosition(pos_x, pos_y).setFontSize(size).setFontColor(color).setAlign(align);
-}
-
-//--------------------------------------------------------------------------------------------------
 // Total health of local client subclass - subclass of roundedRect
 //--------------------------------------------------------------------------------------------------
 biofuelsGame.clientHealth = function() 

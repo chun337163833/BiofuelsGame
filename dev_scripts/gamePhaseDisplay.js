@@ -57,7 +57,6 @@ biofuelsGame.gamePhaseDisplay.prototype.setUpPhases = function()
 	
 	this.phasesArray.push("Contract Phase");
 	this.phasesArray.push("Planting Phase");
-	this.phasesArray.push("WOW TEMP"); // << TEMP if you couldn't tell
 	this.phasesArray.push("Round Wrap-Up");
 
 	this.phasesLabelArray = new Array();

@@ -133,6 +133,8 @@ biofuelsGame.fieldHealthPopup.prototype.showPopup = function()
 	this.graphPlot.addPoint(new goog.math.Coordinate(0,coord));
 	var coord = Math.random() * (-70 - -5) + -5;
 	this.graphPlot.addPoint(new goog.math.Coordinate(coord, 0));
+	// TODO: some kind of force dirty is needed here...
+	this.graphPlot.setDirty(lime.Dirty.LAYOUT);
 	
 	//---------------------------
 	// Add click event
