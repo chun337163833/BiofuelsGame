@@ -1,4 +1,4 @@
-goog.provide('biofuelsGame.clientHealth');
+goog.provide('biofuelsGame.playerHealth');
 
 goog.require('lime.RoundedRect');
 goog.require('lime.animation.FadeTo');
@@ -8,9 +8,9 @@ goog.require('lime.Polygon');
 goog.require('lime.Label');
 
 //--------------------------------------------------------------------------------------------------
-// Total health of local client subclass - subclass of roundedRect
+// Total health of local player subclass - subclass of roundedRect
 //--------------------------------------------------------------------------------------------------
-biofuelsGame.clientHealth = function() 
+biofuelsGame.playerHealth = function() 
 {
     // must call super constructor
     lime.RoundedRect.call(this);
@@ -102,8 +102,8 @@ biofuelsGame.clientHealth = function()
 	this.appendChild(this.graph2);
 };
 
-goog.inherits(biofuelsGame.clientHealth, lime.RoundedRect);
+goog.inherits(biofuelsGame.playerHealth, lime.RoundedRect);
 
 // TODO: some method to update the graph
-//biofuelsGame.clientHealth.prototype.updateClientHealthGraph = function(datapoints...)
+//biofuelsGame.playerHealth.prototype.updatePlayerHealthGraph = function(datapoints...)
 
