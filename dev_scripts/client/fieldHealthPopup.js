@@ -7,6 +7,8 @@ goog.require('lime.fill.Stroke');
 goog.require('lime.Polygon');
 goog.require('lime.Label');
 
+// TODO: find a decent home for any helper stuffs....
+
 // Fancy...don't see any line support and polygon drawing doesn't seem like much help since the
 //	shape has to be closed...just rotate and scale a sprite
 //--------------------------------------------------------------------------------------------------
@@ -20,11 +22,14 @@ function makeLine(size, x1, y1, x2, y2)
     ).setPosition(x1, y1); 
 } 
 
+
+
 //--------------------------------------------------------------------------------------------------
 function makeLabel(text, pos_x, pos_y, size, color, align) 
 {
 	return new lime.Label(text).setPosition(pos_x, pos_y).setFontSize(size).setFontColor(color).setAlign(align);
 }
+
 
 //--------------------------------------------------------------------------------------------------
 // field health popup subclass - subclass of roundedRect

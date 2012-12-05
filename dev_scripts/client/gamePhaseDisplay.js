@@ -81,6 +81,8 @@ biofuelsGame.gamePhaseDisplay.prototype.setUpPhases = function()
 	this.setActivePhase(0);
 }
 
+// TODO: setting or advancing the phase should either come from server logic...
+//	or else from the moderator advancing it...
 //---------------------------------------------------------
 biofuelsGame.gamePhaseDisplay.prototype.setActivePhase = function(newPhaseIndex)
 {
