@@ -21,11 +21,11 @@ biofuelsGame.aggregateGraphEarnings = function()
     this.FRAME_BORDER_SIZE = 12;
     
     // graph "container" styling
-    this.setSize(this.HALF_SIZE_X * 2, this.HALF_SIZE_Y * 2).setRadius(this.FRAME_BORDER_SIZE);
-    this.setFill('#FEF8D0').setStroke(new lime.fill.Stroke(this.FRAME_BORDER_SIZE, '#664'));     
+    this.setSize(this.HALF_SIZE_X * 2, this.HALF_SIZE_Y * 2).setRadius(this.FRAME_BORDER_SIZE * 2);
+    this.setFill('#FEF8D0').setStroke(new lime.fill.Stroke(this.FRAME_BORDER_SIZE * 2, '#664'));     
     
     // graph element properties - TODO: any common stylings should end up in one place, ideally
-	var TITLE_FONT_SIZE = 13;
+	var TITLE_FONT_SIZE = 14;
 	var TITLE_FONT_COLOR = '#fff';
 	
 	var LABEL_FONT_SIZE = 10;
@@ -38,9 +38,10 @@ biofuelsGame.aggregateGraphEarnings = function()
 	var PLOT_STROKE_WIDTH = 2;
 	var PLOT_STROKE_COLOR  = '#d5d';
         	
-	var graphTitle = makeLabel('Farmer Earnings', 0, -(this.HALF_SIZE_Y - (this.FRAME_BORDER_SIZE / 2) + 2), 
+	var graphTitle = makeLabel('Farmer Earnings', 0, -(this.HALF_SIZE_Y - (this.FRAME_BORDER_SIZE / 2) + 5), 
 									TITLE_FONT_SIZE, TITLE_FONT_COLOR, 'center');
 	graphTitle.setSize(this.HALF_SIZE_X * 2, this.FRAME_BORDER_SIZE);
+	graphTitle.setShadow('#110', 2, 0 , 2);	
 	this.appendChild(graphTitle);
 	
 	// TEMP: make some fake data for dev'ing graph - 10 years, 8 farmers

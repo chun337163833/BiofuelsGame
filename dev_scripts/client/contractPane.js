@@ -15,17 +15,18 @@ biofuelsGame.contractPane = function(title, iconAsset)
     // must call super constructor
     lime.RoundedRect.call(this);
         
-    this.setSize(200,90).setRadius(12).setAnchorPoint(0.5,0);
+    this.setSize(200,90).setRadius(12*2).setAnchorPoint(0.5,0);
     this.setFill('#FEF8D0');
-	this.setStroke(new lime.fill.Stroke(12, '#664'));     
+	this.setStroke(new lime.fill.Stroke(12*2, '#664'));     
 	
 	this.icon = new lime.Sprite();
     this.icon.setFill(iconAsset);
     this.icon.setPosition(-70,30).setSize(40,40);
     this.appendChild(this.icon);
 
-	this.graphTitle = makeLabel(title, 0, 6, 12, '#FFF', 'center');
-	this.appendChild(this.graphTitle);
+	var graphTitle = makeLabel(title, 0, 6, 14, '#FFF', 'center');
+	graphTitle.setShadow('#110', 2, 0 , 2);
+	this.appendChild(graphTitle);
 		
 	this.text1 = makeLabel('TODO: some amount of', 15, 30, 10,  '#000', 'center');
 	this.appendChild(this.text1);

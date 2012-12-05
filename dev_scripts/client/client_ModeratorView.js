@@ -40,6 +40,7 @@ biofuelsGame.client_ModeratorView = function()
 	    
     this.director = new lime.Director(document.body,1024,768);
     var scene = new lime.Scene();
+    scene.setQuality(2);
 	    
     this.login = new biofuelsGame.createRoom(this).setPosition(330,200);
     scene.appendChild(this.login);
@@ -55,6 +56,7 @@ biofuelsGame.client_ModeratorView.prototype.launchServer = function(roomName, ro
 {
 	this.login.setHidden(true);
     var scene = new lime.Scene();
+    scene.setQuality(2);
     
     this.gamePhaseDisplay = new biofuelsGame.gamePhaseDisplay();
     this.gamePhaseDisplay.setPosition(330, 40);

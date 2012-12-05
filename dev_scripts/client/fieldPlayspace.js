@@ -26,7 +26,7 @@ biofuelsGame.fieldPlayspace = function(fieldCount)
     	}
     }
  
-    var roundRect = new lime.RoundedRect().setSize(452,grassBlocksNeededY * 150 + 20).setRadius(12).setAnchorPoint(0.5,0).setPosition(225,-10);
+    var roundRect = new lime.RoundedRect().setSize(452,grassBlocksNeededY * 150 + 20).setRadius(12 * 2).setAnchorPoint(0.5,0).setPosition(225,-10);
 	roundRect.setStroke(new lime.fill.Stroke(12 * 2, '#565636')); // #664 looks too light...fudge a bit darker...
 	this.appendChild(roundRect);
 	

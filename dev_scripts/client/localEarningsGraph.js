@@ -45,7 +45,7 @@ biofuelsGame.localEarningsGraph = function()
 {
     // must call super constructor
     lime.RoundedRect.call(this);
-    this.setQuality(1.5);
+    this.setQuality(1.25);
 
   //  this.setRenderer(lime.Renderer.CANVAS);
     
@@ -59,7 +59,7 @@ biofuelsGame.localEarningsGraph = function()
     this.setFill('#FEF8D0').setStroke(new lime.fill.Stroke(this.FRAME_BORDER_SIZE, '#664'));     
     
     // graph element properties - TODO: any common stylings should end up in one place, ideally
-	var TITLE_FONT_SIZE = 16;
+	var TITLE_FONT_SIZE = 15;
 	var TITLE_FONT_COLOR = '#fff';
 	
 	var LABEL_FONT_SIZE = 10;
@@ -72,10 +72,10 @@ biofuelsGame.localEarningsGraph = function()
 	var PLOT_STROKE_WIDTH = 2;
 	var PLOT_STROKE_COLOR  = '#d5d';
         	
-	var graphTitle = makeLabel('Farmer Earnings', 0, -(this.HALF_SIZE_Y - (this.FRAME_BORDER_SIZE / 2) + 8), 
+	var graphTitle = makeLabel('Farmer Earnings', 0, -(this.HALF_SIZE_Y - (this.FRAME_BORDER_SIZE / 2) + 5), 
 									TITLE_FONT_SIZE, TITLE_FONT_COLOR, 'center');
 	graphTitle.setSize(this.HALF_SIZE_X * 2, this.FRAME_BORDER_SIZE);
-	graphTitle.setShadow('#110', 5, 0 , 2);
+	graphTitle.setShadow('#110', 2, 0 , 2);
 	this.appendChild(graphTitle);
 	
 	// TEMP: make some fake data for dev'ing graph - 10 years, 8 farmers

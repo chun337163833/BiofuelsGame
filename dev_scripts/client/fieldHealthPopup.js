@@ -40,11 +40,11 @@ biofuelsGame.fieldHealthPopup = function()
     lime.RoundedRect.call(this);
         
    // graph "container" styling
-    this.setSize(180,180).setRadius(10).setScale(0.25);
-    this.setFill('#FEF8D0').setStroke(new lime.fill.Stroke(10, '#664'));     
+    this.setSize(180,180).setRadius(12*2).setScale(0.25);
+    this.setFill('#FEF8D0').setStroke(new lime.fill.Stroke(12*2, '#664'));     
  
     // graph element properties - TODO: any common stylings should end up in one place, ideally
-	var TITLE_FONT_SIZE = 12;
+	var TITLE_FONT_SIZE = 14;
 	var TITLE_FONT_COLOR = '#fff';
 	
 	var LABEL_FONT_SIZE = 10;
@@ -80,6 +80,7 @@ biofuelsGame.fieldHealthPopup = function()
 	
 	// Titles + graph labels
 	var graphTitle = makeLabel('Field Sustainability', 0, -85, TITLE_FONT_SIZE, TITLE_FONT_COLOR, 'center');
+	graphTitle.setShadow('#110', 2, 0 , 2);
 	this.appendChild(graphTitle);
 	
 	var graphLabel = makeLabel('Emissions', 0, -75, LABEL_FONT_SIZE, LABEL_FONT_COLOR, 'center');

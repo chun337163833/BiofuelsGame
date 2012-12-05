@@ -30,11 +30,11 @@ biofuelsGame.createRoom = function(caller)
     this.setOpacity(0);
     
    // graph "container" styling - TODO: any common stylings should end up in one place
-    this.setSize(300,160).setRadius(12);
-    this.setFill('#FEF8D0').setStroke(new lime.fill.Stroke(12, '#664'));     
+    this.setSize(300,160).setRadius(12*2);
+    this.setFill('#FEF8D0').setStroke(new lime.fill.Stroke(12*2, '#664'));     
  
     // graph element properties - TODO: any common stylings should end up in one place
-	var TITLE_FONT_SIZE = 12;
+	var TITLE_FONT_SIZE = 14;
 	var TITLE_FONT_COLOR = '#fff';
 	
 	var LABEL_FONT_SIZE = 10;
@@ -42,12 +42,13 @@ biofuelsGame.createRoom = function(caller)
 	
 	// Titles + graph labels
 	var graphTitle = makeLabel('Create Room', 0, -75, TITLE_FONT_SIZE, TITLE_FONT_COLOR, 'center');
+	graphTitle.setShadow('#110', 2, 0 , 2);	
 	this.appendChild(graphTitle);
 	
-	var graphLabel = makeLabel('Room Name', -80, -40, TITLE_FONT_SIZE, LABEL_FONT_COLOR, 'right');
+	var graphLabel = makeLabel('Room Name', -80, -40, LABEL_FONT_SIZE, LABEL_FONT_COLOR, 'right');
 	this.appendChild(graphLabel);
 
-	graphLabel = makeLabel('Room Password', -90, 0, TITLE_FONT_SIZE, LABEL_FONT_COLOR, 'right');
+	graphLabel = makeLabel('Room Password', -90, 0, LABEL_FONT_SIZE, LABEL_FONT_COLOR, 'right');
 	this.appendChild(graphLabel);
 
     var createButton = new lime.GlossyButton("Create Room").setAnchorPoint(0.5, 0).setPosition(0, 40).setSize(120,30).setColor('#885');

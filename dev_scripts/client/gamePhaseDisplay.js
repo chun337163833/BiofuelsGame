@@ -18,18 +18,19 @@ biofuelsGame.gamePhaseDisplay = function()
     
     this.activePhaseIndex = -1;
     
-    this.setSize(660,60).setRadius(10);
+    this.setSize(660,60).setRadius(12*2);
     this.setFill('#FEF8D0');
-	this.setStroke(new lime.fill.Stroke(10, '#664'));
+	this.setStroke(new lime.fill.Stroke(12*2, '#664'));
 	
-	this.graphTitle = makeLabel('Round Progression', 0, -25, 12, '#fff', 'center');
-	this.appendChild(this.graphTitle);
+	var graphTitle = makeLabel('Round Progression', 0, -25, 14, '#fff', 'center');
+	graphTitle.setShadow('#110', 2, 0 , 2);
+	this.appendChild(graphTitle);
 
-	this.phaseChannel = new lime.RoundedRect().setPosition(0,5).setSize(500,5).setFill('#888').setStroke(new lime.fill.Stroke(1, '#000'));
+	this.phaseChannel = new lime.RoundedRect().setPosition(0,5).setSize(500,5).setFill('#888').setStroke(new lime.fill.Stroke(2, '#000'));
 	this.appendChild(this.phaseChannel);
 
 	// placed on first so it draws behind the main phase circle markers
-	this.phaseMovingMarker = new lime.Circle().setPosition(-250, 5).setSize(10,10).setFill('#f00').setStroke(new lime.fill.Stroke(1, '#000'));
+	this.phaseMovingMarker = new lime.Circle().setPosition(-250, 5).setSize(10,10).setFill('#f00').setStroke(new lime.fill.Stroke(2, '#000'));
 	this.appendChild(this.phaseMovingMarker);
 	
 	this.setUpPhases();	
@@ -71,7 +72,7 @@ biofuelsGame.gamePhaseDisplay.prototype.setUpPhases = function()
 		this.appendChild(label);
 		this.phasesLabelArray.push(label);
 		
-		var marker = new lime.Circle().setPosition(x, 5).setSize(15,15).setFill('#fff').setStroke(new lime.fill.Stroke(1, '#000'));
+		var marker = new lime.Circle().setPosition(x, 5).setSize(15,15).setFill('#fff').setStroke(new lime.fill.Stroke(2, '#000'));
 		this.appendChild(marker);
 		this.phasesMarkerArray.push(marker);
 		

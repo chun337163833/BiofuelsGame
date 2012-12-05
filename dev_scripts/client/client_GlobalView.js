@@ -39,6 +39,7 @@ biofuelsGame.client_GlobalView = function()
 
     var director = new lime.Director(document.body,1024,768);
     var scene = new lime.Scene();
+    scene.setQuality(2);
 
     var gamePhaseDisplay = new biofuelsGame.gamePhaseDisplay();
     gamePhaseDisplay.setPosition(330, 40);
