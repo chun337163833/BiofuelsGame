@@ -1,1 +1,1 @@
-python ../bin/lime.py update
+python ../limejs/bin/lime.py update
